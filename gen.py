@@ -2,8 +2,6 @@ from PIL import Image
 import itertools
 import glob
 
-from numpy import mask_indices
-
 #Trait Lists
 bg_list = []
 body_list = []
@@ -49,10 +47,8 @@ output_counter = 0
 #Generate images for every combination
 for i in main_list:
     counter = 0
-    im = Image.new("RGBA", (1255, 1153))
+    prev_x = Image.new("RGBA", (1255, 1153))
     for x in i: 
-        if counter == 0:
-            prev_x = im
         if x != 0:
             prev_x.paste(x, (0,0), mask = x)
         if counter == 5:
